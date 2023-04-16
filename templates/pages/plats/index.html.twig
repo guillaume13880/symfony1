@@ -4,6 +4,8 @@
 
 {% block body %}
     <div class="container mt-4">
+        {% if not plats.items is same as([]) %}
+
         <h1 class="text-warning text-center">Les Plats Incontournables</h1>
 
         <div class="count mt-4">
@@ -37,5 +39,8 @@
         <div class="navigation d-flex justify-content-center mt-4">
             {{ knp_pagination_render(plats) }}
         </div>
+    {% else %}
+        <h4>Il n'y a pas de plats</h4>
+    {% endif %}
     </div>
 {% endblock %}

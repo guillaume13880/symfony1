@@ -11,7 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PlatsController extends AbstractController
 {
-    #[Route('/plats', name: 'app_plats')]
+
+    /** 
+     * Cette fonction affiche tous les plats 
+     * 
+    */
+
+
+    #[Route('/plats', name: 'app_plats', methods: ['GET'])]
     public function index(PlatsRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $plats = $paginator->paginate(
