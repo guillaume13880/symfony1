@@ -6,7 +6,7 @@ use App\Entity\Plats;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class AppFixtures extends Fixture
 {
@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
 
             $plats = new Plats();
             $plats
-               ->setTitle($this->faker->word())
+               ->setTitle($this->faker->words(3, true))
                ->setImage($this->faker->imageUrl(360, 360, 'animals', true))
                ->setPrix(mt_rand(0, 25))
                ->setDescription($this->faker->text());
