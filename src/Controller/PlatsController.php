@@ -109,4 +109,26 @@ class PlatsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/plats/suppression/{id}', 'app_plats.delete', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager, Plats $plats) : Response
+    {
+        if (!$plats) {
+            $this->addFlash(
+                'warning',
+                'Le plats en question n\'a pas été trouvé !'
+            );
+            return $this->redirectToRoute('app_plats');
+        }
+
+        $manager->remove($plats);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre plats a été supprimé avec succès !'
+        );
+
+        return $this->redirectToRoute('app_plats');
+    }
 }

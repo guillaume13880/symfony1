@@ -31,6 +31,8 @@
                     <th scope="col">Image</th>
                     <th scope="col">Prix</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Suppression</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +43,12 @@
                         <td>{{plat.image}}</td>
                         <td>{{plat.prix}}</td>
                         <td>{{plat.description}}</td>
+                        <td>
+                            <a href="{{ path('app_plats.edit', { id: plat.id }) }}" class="btn btn-info">Modifier</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_plats.delete', { id: plat.id }) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
                     </tr>
                 {% endfor %}
                 
