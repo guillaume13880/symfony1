@@ -66,6 +66,7 @@ class PlatsController extends AbstractController
                 'Votre plats a été créé avec succès !'
             );
 
+            return $this->redirectToRoute('plats.index');
             
         }
 
