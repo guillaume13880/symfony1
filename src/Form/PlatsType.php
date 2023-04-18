@@ -33,7 +33,7 @@ class PlatsType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('image', FileType::class, [
+            ->add('image', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -42,7 +42,7 @@ class PlatsType extends AbstractType
                     'class' => 'form-label mt-4'
                 ],
                 'constraints' => [
-                    new Assert\NotBlank()
+                    
                 ]
             ])
             ->add('prix', MoneyType::class, [

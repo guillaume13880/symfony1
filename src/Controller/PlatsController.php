@@ -21,7 +21,7 @@ class PlatsController extends AbstractController
 {
 
     /** 
-     * Cette fonction affiche tous les plats dans un tableau
+     * Ce Controller affiche tous les plats dans un tableau avec une pagination
      * 
     */
 
@@ -42,7 +42,7 @@ class PlatsController extends AbstractController
 
 
     /** 
-     * Cette fonction permet de créer un plats 
+     * Ce Controller permet de créer un plats dans un form
      * 
     */
 
@@ -72,6 +72,40 @@ class PlatsController extends AbstractController
         }
 
         return $this->render('pages/plats/new.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /** 
+     * Ce Controller permet de modifié le plats
+     * 
+    */
+    #[Route('/plats/edition/{id}', 'app_plats.edit',  methods: ['GET', 'POST'])]
+    public function edit(
+        Plats $plats, 
+        Request $request,
+        EntityManagerInterface $manager
+        ) : Response
+    {
+
+        $form = $this->createForm(PlatsType::class , $plats);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plats = $form->getData();
+
+            $manager->persist($plats);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre plats a été modifié avec succès !'
+            );
+
+            return $this->redirectToRoute('app_plats');
+            
+        }
+
+        return $this->render('pages/plats/edit.html.twig', [
             'form' => $form->createView()
         ]);
     }
