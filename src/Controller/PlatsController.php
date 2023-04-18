@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Plats;
 use App\Repository\PlatsRepository;
 use App\Form\PlatsType;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,7 +46,10 @@ class PlatsController extends AbstractController
     */
 
     #[Route('/plats/nouveau', name: 'app_plats.new', methods: ['GET', 'POST'])]
-    public function new(Request $request) : Response
+    public function new(
+        Request $request,
+        EntityManagerInterface $manager
+        ) : Response
     {
         $plats = new Plats();
         $form = $this->createForm(PlatsType::class , $plats);
@@ -51,6 +57,16 @@ class PlatsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $plats = $form->getData();
+
+            $manager->persist($plats);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre plats a été créé avec succès !'
+            );
+
+            
         }
 
         return $this->render('pages/plats/new.html.twig', [

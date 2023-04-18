@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -32,7 +33,18 @@ class PlatsType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('image')
+            ->add('image', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'Image',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
+                ]
+            ])
             ->add('prix', MoneyType::class, [
                 'attr' => [
                     'class' => 'form-control',

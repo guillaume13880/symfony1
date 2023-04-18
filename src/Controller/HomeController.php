@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    
      /** 
      * Cette fonction affiche tous les plats dans la page d'acceuil
      * 
