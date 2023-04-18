@@ -7,13 +7,6 @@
 
         <h1 class="mt-4 text-warning">Création d'un plats</h1>
 
-        {# flash info success a la création d'un plats #}
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-4">
-                {{ message }}
-            </div>
-        {% endfor %}
-
         {{ form_start(form) }}
 
             <div class="form-group">

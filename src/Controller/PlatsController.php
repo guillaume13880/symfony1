@@ -11,6 +11,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -66,7 +67,7 @@ class PlatsController extends AbstractController
                 'Votre plats a été créé avec succès !'
             );
 
-            return $this->redirectToRoute('plats.index');
+            return $this->redirectToRoute('app_plats');
             
         }
 
