@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-
+        // Plats
         for ($i=0; $i <= 19; $i++) {
 
             $plats = new Plats();

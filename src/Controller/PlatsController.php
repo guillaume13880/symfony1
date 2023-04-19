@@ -112,7 +112,7 @@ class PlatsController extends AbstractController
 
 
     /** 
-     * Ce Controller permet de supprimer le plats
+     * Ce Controller permet de supprimer le plats en fonction de l'id saisie
      * 
     */
     #[Route('/plats/suppression/{id}', 'app_plats.delete', methods: ['GET'])]
