@@ -53,7 +53,7 @@
                             <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            Todo
+                            <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}

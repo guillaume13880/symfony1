@@ -66,8 +66,9 @@ class MenusController extends AbstractController
         ]);
     }
 
+
     /** 
-     * Ce Controller permet de modifié le menu
+     * Ce Controller permet de modifié un menu
      * 
     */
     #[Route('/menus/edition/{id}', 'app_menus.edit',  methods: ['GET', 'POST'])]
@@ -98,6 +99,25 @@ class MenusController extends AbstractController
         return $this->render('pages/menus/edit.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+
+    /** 
+     * Ce Controller permet de supprimer un menu en fonction de l'id saisie
+     * 
+    */
+    #[Route('/menus/suppression/{id}', 'app_menus.delete', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager, Menus $menus) : Response
+    {
+        $manager->remove($menus);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre menu a été supprimé avec succès !'
+        );
+
+        return $this->redirectToRoute('app_menus');
     }
     
 }
