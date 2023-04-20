@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Les Menus{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="mt-4 text-warning text-center">Modification du Menu</h1>
+
+        {{ form_start(form) }}
+
+            <div class="card border-primary mt-4 mb-3">
+                <div class="card-header text-white bg-dark  text-center">Titre du menu</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form_label(form.titre) }}
+                        {{ form_widget(form.titre) }}
+                        <div class="form-error">
+                            {{ form_errors(form.titre) }}              
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-primary mb-3">
+                <div class="card-header text-white bg-dark text-center">Formule n°1</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form_label(form.formule1) }}
+                        {{ form_widget(form.formule1) }}
+                        <div class="form-error">
+                            {{ form_errors(form.formule1) }}              
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.description1) }}
+                        {{ form_widget(form.description1) }}
+                        <div class="form-error">
+                            {{ form_errors(form.description1) }}              
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.prix1) }}
+                        {{ form_widget(form.prix1) }}
+                        <div class="form-error">
+                            {{ form_errors(form.prix1) }}              
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-primary mb-3">
+                <div class="card-header text-white bg-dark text-center">Formule n°2</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form_label(form.formule2) }}
+                        {{ form_widget(form.formule2) }}
+                        <div class="form-error">
+                            {{ form_errors(form.formule2) }}              
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.description2) }}
+                        {{ form_widget(form.description2) }}
+                        <div class="form-error">
+                            {{ form_errors(form.description2) }}              
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.prix2) }}
+                        {{ form_widget(form.prix2) }}
+                        <div class="form-error">
+                            {{ form_errors(form.prix2) }}              
+                        </div>
+                    </div>    
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+        
+    </div>
+{% endblock %}

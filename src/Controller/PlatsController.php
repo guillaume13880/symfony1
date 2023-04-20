@@ -98,7 +98,7 @@ class PlatsController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre plats a été modifié avec succès !'
+                'Votre plat a été modifié avec succès !'
             );
 
             return $this->redirectToRoute('app_plats');

@@ -50,10 +50,10 @@
                         <td>{{menu.description2}}</td>
                         <td>{{menu.prix2}}</td>
                         <td>
-                            Todo do
+                            <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            Todo do
+                            Todo
                         </td>
                     </tr>
                 {% endfor %}

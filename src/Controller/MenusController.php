@@ -65,5 +65,39 @@ class MenusController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /** 
+     * Ce Controller permet de modifié le menu
+     * 
+    */
+    #[Route('/menus/edition/{id}', 'app_menus.edit',  methods: ['GET', 'POST'])]
+    public function edit(
+        Menus $menus, 
+        Request $request,
+        EntityManagerInterface $manager
+        ) : Response
+    {
+
+        $form = $this->createForm(MenusType::class , $menus);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $menus = $form->getData();
+
+            $manager->persist($menus);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre menu a été modifié avec succès !'
+            );
+
+            return $this->redirectToRoute('app_menus');
+            
+        }
+
+        return $this->render('pages/menus/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
     
 }
