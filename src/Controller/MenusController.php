@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Menus;
 use App\Repository\MenusRepository;
 use App\Form\MenusType;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,14 +37,29 @@ class MenusController extends AbstractController
 
 
     /** 
-     * Ce Controller créer un Menus
+     * Ce Controller permet de créer un Menus
      * 
     */
     #[Route('/menus/creation', name:'app_menus.new', methods: ['GET', 'POST'])]
-    public function new() : Response
+    public function new(Request $request, EntityManagerInterface $manager) : Response
     {
         $menus = new Menus();
         $form = $this->createForm(MenusType::class, $menus);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $menus = $form->getData();
+
+            $manager->persist($menus);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre menu a été créé avec succès !'
+            );
+
+            return $this->redirectToRoute('app_menus');
+        }
 
         return $this->render('pages/menus/new.html.twig', [
             'form' => $form->createView()
