@@ -8,6 +8,10 @@
 
         <h1 class="text-warning text-center">Liste des Menus</h1>
 
+        <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
+            Créer un Menu
+        </a>
+
         <div class="count mt-4">
             <h4>Il y a {{ menus.getTotalItemCount }} Menus au total ! </h4>
         </div>

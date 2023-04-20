@@ -30,4 +30,10 @@ class MenusController extends AbstractController
             'menus' => $menus
         ]);
     }
+
+    #[Route('/menus/creation', name: 'app_menus.new', methods: ['GET', 'POST'])]
+    public function new() : Response
+    {
+        return $this->render('pages/menus/new.html.twig');
+    }
 }
