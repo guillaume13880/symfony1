@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Les Menus{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        {% if not menus.items is same as([]) %}
+
+        <h1 class="text-warning text-center">Liste des Menus</h1>
+
+        <div class="count mt-4">
+            <h4>Il y a {{ menus.getTotalItemCount }} Menus au total ! </h4>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Formule 1</th>
+                    <th scope="col">Description 1</th>
+                    <th scope="col">Prix 1</th>
+                    <th scope="col">Formule 2</th>
+                    <th scope="col">Description 2</th>
+                    <th scope="col">Prix 2</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Suppression</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for menu in menus %}
+                    <tr class="table-active">
+                        <th scope="row">{{menu.id}}</th>
+                        <td>{{menu.titre}}</td>
+                        <td>{{menu.formule1}}</td>
+                        <td>{{menu.prix1}}</td>
+                        <td>{{menu.description1}}</td>
+                        <td>{{menu.formule2}}</td>
+                        <td>{{menu.description2}}</td>
+                        <td>{{menu.prix2}}</td>
+                        <td>
+                            Todo do
+                        </td>
+                        <td>
+                            Todo do
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(menus) }}
+        </div>
+    {% else %}
+        <h4 class="m-4">Il n'y a pas de Menus</h4>
+    {% endif %}
+    </div>
+{% endblock %}
