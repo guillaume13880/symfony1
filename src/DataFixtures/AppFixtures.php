@@ -4,15 +4,21 @@ namespace App\DataFixtures;
 
 use App\Entity\Plats;
 use App\Entity\Menus;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Faker\Generator;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
 {
    
     private $faker;
+
+    
 
     public function __construct()
     {
@@ -57,7 +63,19 @@ class AppFixtures extends Fixture
             $manager->persist($menus);
         }
 
-        $manager->flush();
+        //utilisateur
+        for ($u=0; $u <= 9; $u++) {
 
+            $user = new User();
+            $user
+               ->setfullName($this->faker->name())
+               ->setEmail($this->faker->email())
+               ->setRoles(['ROLE_USER'])
+               ->setPlainPassword('password');
+
+            $manager->persist($user);
+        }
+
+        $manager->flush();
     }
 }
