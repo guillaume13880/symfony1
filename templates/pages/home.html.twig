@@ -19,8 +19,8 @@
         {% for plat in plats %}
         <div class="col-lg-3">
             <div class="card mb-3">
-                <h4 class="card-header text-center"> {{plat.title}} </h4>
                 <img class="fit-picture" src=" {{plat.image}} " alt="image de plats incontournable">
+                <span class="a-txt"> {{plat.title}} </span>
             </div>
         </div>
         {% endfor %}
@@ -36,6 +36,35 @@
         <h4 class="m-4">Il n'y a pas de plats</h4>
     {% endif %}
 </div>
+<style>
+    .card {
+        display: grid;
+    }
+    .card>*{
+    grid-area:1/1/-1/-1; 
+    /* raccourci pour grid-row et grid-column */
+    }
+    .a-txt{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    opacity:0;
+    transition:opacity .8s;
+    }
+    .a-txt:hover{
+    opacity:1;
+    background:#999999;
+    }
+    img{
+    width:100%;
+    height:auto;
+    border-radius:4px
+    }
+    a{
+    text-decoration:none;
+    }
+</style>
 
 {% endblock %}
 
