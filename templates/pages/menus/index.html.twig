@@ -1,71 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quai Antique - Les Menus{% endblock %}
+{% block title %}
+    Quai Antique - Nos Menus !
+{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
-        {% if not menus.items is same as([]) %}
 
-        <h1 class="text-warning text-center">Liste des Menus</h1>
+{% if not menus.items is same as([]) %}
 
-        <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
-            Créer un Menu
-        </a>
+<div class="container text-center mt-4">
+    {% for menu in menus %}
+        <h1 class="text-warning text-center m-4">Présentation des Menus</h1>
+        <div class="container border border-primary">
+            <h2 class="mt-4"> {{menu.titre}} </h2>
 
-        {# flash info success a la création d'un menu #}
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-4">
-                {{ message }}
-            </div>
-        {% endfor %}
+            <h5 class="mt-4"> {{menu.formule1}} </h5>
+            <p> {{menu.description1}} </p>
+            <p> {{menu.prix1}} € </p>
 
-        <div class="count mt-4">
-            <h4>Il y a {{ menus.getTotalItemCount }} Menus au total ! </h4>
+            <h5 class="mt-4"> {{menu.formule2}} </h5>
+            <p> {{menu.description2}} </p>
+            <p> {{menu.prix2}} € </p>
         </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Numéro</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Formule 1</th>
-                    <th scope="col">Description 1</th>
-                    <th scope="col">Prix 1</th>
-                    <th scope="col">Formule 2</th>
-                    <th scope="col">Description 2</th>
-                    <th scope="col">Prix 2</th>
-                    <th scope="col">Edition</th>
-                    <th scope="col">Suppression</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for menu in menus %}
-                    <tr class="table-active">
-                        <th scope="row">{{menu.id}}</th>
-                        <td>{{menu.titre}}</td>
-                        <td>{{menu.formule1}}</td>
-                        <td>{{menu.prix1}}</td>
-                        <td>{{menu.description1}}</td>
-                        <td>{{menu.formule2}}</td>
-                        <td>{{menu.description2}}</td>
-                        <td>{{menu.prix2}}</td>
-                        <td>
-                            <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
-                        </td>
-                        <td>
-                            <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                
-            </tbody>
-        </table>
         
-        <div class="navigation d-flex justify-content-center mt-4">
-            {{ knp_pagination_render(menus) }}
-        </div>
-    {% else %}
-        <h4 class="m-4">Il n'y a pas de Menus</h4>
-    {% endif %}
+    {% endfor %}
+    <div class="navigation d-flex justify-content-center m-4">
+        {{ knp_pagination_render(menus) }}
     </div>
+    <div class="d-flex justify-content-start m-4">
+        <button class="btn btn-primary btn-lg"; type="button">Réserver une table</button>
+    </div>
+
+    {% else %}
+        <h4 class="m-4">Il n'y a pas de Menu</h4>
+    {% endif %}
+</div>
+
 {% endblock %}

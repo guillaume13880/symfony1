@@ -14,8 +14,8 @@
         <p class="lead text-center">Venez deguster nos delicieux produit issu de notre belle region La Savoie ! </p>
         <hr class="my-4">
     </div>
-    <div class="row">
 
+    <div class="row">
         {% for plat in plats %}
         <div class="col-lg-3">
             <div class="card mb-3">
@@ -28,7 +28,7 @@
     <div class="navigation d-flex justify-content-center mt-4">
         {{ knp_pagination_render(plats) }}
     </div>
-    <div class="container m-4">
+    <div class="m-4">
         <button class="btn btn-primary btn-lg"; type="button">Réserver une table</button>
     </div>
 

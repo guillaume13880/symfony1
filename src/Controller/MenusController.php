@@ -16,9 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MenusController extends AbstractController
 {
-
     /** 
-     * Ce Controller affiche tous les Menus dans un tableau avec une pagination
+     * Ce Controller affiche tous les Menus dans la page d'acceuil avec une pagination
      * 
     */
     #[Route('/menus', name: 'app_menus', methods: ['GET'])]
@@ -27,10 +26,29 @@ class MenusController extends AbstractController
         $menus = $paginator->paginate(
             $repository->findAll(),
             $request->query->getInt('page', 1),
-            5 
+            1 
         );
 
         return $this->render('pages/menus/index.html.twig', [
+            'menus' => $menus
+        ]);
+    }
+
+
+    /** 
+     * Ce Controller affiche tous les Menus dans un tableau avec une pagination
+     * 
+    */
+    #[Route('/menus/tableau', name: 'app_menus.tableau', methods: ['GET'])]
+    public function tableau(MenusRepository $repository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $menus = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            5 
+        );
+
+        return $this->render('pages/menus/tableau.html.twig', [
             'menus' => $menus
         ]);
     }
@@ -58,7 +76,7 @@ class MenusController extends AbstractController
                 'Votre menu a été créé avec succès !'
             );
 
-            return $this->redirectToRoute('app_menus');
+            return $this->redirectToRoute('app_menus.tableau');
         }
 
         return $this->render('pages/menus/new.html.twig', [
@@ -92,7 +110,7 @@ class MenusController extends AbstractController
                 'Votre menu a été modifié avec succès !'
             );
 
-            return $this->redirectToRoute('app_menus');
+            return $this->redirectToRoute('app_menus.tableau');
             
         }
 
@@ -117,7 +135,7 @@ class MenusController extends AbstractController
             'Votre menu a été supprimé avec succès !'
         );
 
-        return $this->redirectToRoute('app_menus');
+        return $this->redirectToRoute('app_menus.tableau');
     }
     
 }
