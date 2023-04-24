@@ -22,9 +22,10 @@ class RegistrationType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'minlength' => '2',
-                    'maxlength' => '50'
+                    'maxlength' => '50',
+                    'placeholder' => 'DOE john'
                 ],
-                'label' => 'Nom / Prénom',
+                'label' => 'Nom et Prénom',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
@@ -32,14 +33,16 @@ class RegistrationType extends AbstractType
                     new Assert\Length(['min' => 2, 'max' => 50]),
                     new Assert\NotBlank()
                 ]
+                
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'minlength' => '2',
-                    'maxlength' => '180'
+                    'maxlength' => '180',
+                    'placeholder' => 'john.doe@exemple.fr'
                 ],
-                'label' => 'Adresse email',
+                'label' => 'Adresse e-mail',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
@@ -53,7 +56,8 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'placeholder' => '********'
                     ],
                     'label' => 'Mot de passe',
                     'label_attr' => [
@@ -62,7 +66,8 @@ class RegistrationType extends AbstractType
                 ],
                 'second_options' => [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'placeholder' => '********'
                     ],
                     'label' => 'Confirmation du mot de passe',
                     'label_attr' => [
