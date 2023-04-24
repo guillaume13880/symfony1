@@ -63,21 +63,34 @@ class UserController extends AbstractController
     }
 
     /**
-     * Ce controller permet de modifier le mot de passe
+     * Ce controller permet de modifier le mot de passe utilisateur
      */
     #[Route('/utilisateur/edition-mot-de-passe/{id}', name: 'app_user.edit.password', methods: ['GET', 'POST'])]
-    public function editPassword(User $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher) : Response
+    public function editPassword(
+        User $user, 
+        Request $request, 
+        EntityManagerInterface $manager, 
+        UserPasswordHasherInterface $hasher) : Response
     {
+
+         // Si l'utilisateur courant est connecté, sinon renvoie sur le form de connexion
+        if(!$this->getUser()) {
+            return $this->redirectToRoute('home.index');
+        }
+
+        // Si l'utilisateur courant et le different que l'id recupérer au niveau de la route renvoie sur la page d'accueil 
+        if ($this->getUser() !== $user) {
+            return $this->redirectToRoute('home.index');
+        }
+
         $form = $this->createForm(UserPasswordType::class);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             if($hasher->isPasswordValid($user, $form->getData()['plainPassword'])) {
-                $user->setPassword(
-                    $hasher->hashPassword(
-                        $user,
-                        $form->getData()['newPassword']
-                    )
+                $user->setUpdatedAt(new \DateTimeImmutable());
+                $user->setPlainPassword(
+                    $form->getData()['newPassword']
                 );
 
                 $manager->persist($user);
