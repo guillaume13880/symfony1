@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class UserController extends AbstractController
@@ -18,7 +19,7 @@ class UserController extends AbstractController
      * Ce Controller permet la modification du profil utilisateur
     */ 
     #[Route('/utilisateur/edition/{id}', name: 'app_user.edit', methods: ['GET', 'POST'])]
-    public function edit(User $user, Request $request, EntityManagerInterface $manager): Response
+    public function edit(User $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
     {
         // Si l'utilisateur courant est connecté, sinon renvoie sur le form de connexion
         if (!$this->getUser()) {
@@ -35,16 +36,24 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) { 
-            $user = $form->getData();
-            $manager->persist($user);
-            $manager->flush();
-            
-            $this->addFlash(
-                'success',
-                'Les informations de votre compte ont bien été modifiées '
-            );
+            if($hasher->isPasswordValid($user, $form->getData()->getPlainPassword())) {
+                $user = $form->getData();
+                $manager->persist($user);
+                $manager->flush();
+                
+                $this->addFlash(
+                    'success',
+                    'Les informations de votre compte ont bien été modifiées '
+                );
+    
+                return $this->redirectToRoute('home.index');
+            }else {
+                $this->addFlash(
+                    'warning',
+                    'Le mot de passe renseigné est incorrect '
+                );
+            }
 
-            return $this->redirectToRoute('home.index');
         }
 
         return $this->render('pages/user/edit.html.twig', [

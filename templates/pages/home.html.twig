@@ -9,14 +9,12 @@
 {% if not plats.items is same as([]) %}
 
 <div class="container mt-4">
-
-    {# flash info success a la modification d'un profil utilisateur #}
+    {# flash info success a la modification du profil utilisateur #}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success mt-4">
             {{ message }}
         </div>
     {% endfor %}
-
     <div class="jumbotron">
         <h1 class="display-4 text-center text-warning">Bienvenue au Quai Antique!</h1>
         <p class="lead text-center">Venez deguster nos delicieux produit issu de notre belle region La Savoie ! </p>
