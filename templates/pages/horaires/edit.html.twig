@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Modification des horaires{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {# flash info danger a la modification des horaires #}
+        {% for message in app.flashes('warning') %}
+            <div class="alert alert-danger mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="card mt-4 p-4">
+            <div class="card-body">
+                <h1 class=" text-warning text-center">Formulaire de modification des horaires</h1>
+
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
