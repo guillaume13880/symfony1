@@ -18,14 +18,6 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.image) }}
-                {{ form_widget(form.image) }}
-                <div class="form-error">
-                    {{ form_errors(form.image) }}              
-                </div>
-            </div>
-
-            <div class="form-group">
                 {{ form_label(form.prix) }}
                 {{ form_widget(form.prix) }}
                 <div class="form-error">
@@ -38,6 +30,14 @@
                 {{ form_widget(form.description) }}
                 <div class="form-error">
                     {{ form_errors(form.description) }}              
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.imageFile) }}
+                {{ form_widget(form.imageFile) }}
+                <div class="form-error">
+                    {{ form_errors(form.imageFile) }}              
                 </div>
             </div>
 

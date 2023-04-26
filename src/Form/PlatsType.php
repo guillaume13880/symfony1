@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PlatsType extends AbstractType
 {
@@ -33,16 +34,13 @@ class PlatsType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('image', TextType::class, [
+            ->add('imageFile', VichImageType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Image',
+                'label' => 'Image plats incontournable',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
-                ],
-                'constraints' => [
-                    
                 ]
             ])
             ->add('prix', MoneyType::class, [

@@ -41,7 +41,9 @@
                     <tr class="table-active">
                         <th scope="row">{{plat.id}}</th>
                         <td>{{plat.title}}</td>
-                        <td>{{plat.image}}</td>
+                        <td>
+                            <img class="fit-picture" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
+                        </td>
                         <td>{{plat.prix}}</td>
                         <td>{{plat.description}}</td>
                         <td>categorie</td>
@@ -65,6 +67,10 @@
     {% endif %}
     </div>
 <style>
+    img{
+        width:45px;
+        height:40px;
+    }
      .active5 {
         color:orange;
     }

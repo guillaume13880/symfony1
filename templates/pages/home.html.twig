@@ -25,7 +25,7 @@
         {% for plat in plats %}
         <div class="col">
             <div class="card mb-3">
-                <img class="fit-picture" src=" {{plat.image}} " alt="image de plats incontournable">
+                <img class="fit-picture" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <span class="a-txt"> {{plat.title}} </span>
             </div>
         </div>
@@ -43,6 +43,10 @@
     {% endif %}
 </div>
 <style>
+    img{
+        min-height:280px;
+        max-height:280px;
+    }
     .active1 {
         color:orange;
     }

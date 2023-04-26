@@ -36,7 +36,6 @@ class AppFixtures extends Fixture
             $plats = new Plats();
             $plats
                ->setTitle($this->faker->words(3, true))
-               ->setImage($this->faker->imageUrl(360, 360, 'animals', true))
                ->setPrix(mt_rand(0, 25))
                ->setDescription($this->faker->text());
 
