@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-2">
   <div class="container-fluid">
-    <a class="navbar-brand text-warning" href="{{ path('home.index') }}">Quai Antique</a>
+    <a class="navbar-brand text-warning ms-4" href="{{ path('home.index') }}">Quai Antique</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,12 +33,26 @@
       </ul>
 
       <div class="d-flex">
-        <button type="button" class="btn btn-outline-light">
-          <a class="nav-link" href="{{ path('app_security.registration') }}">Inscription</a>
-        </button>
-        <button type="button" class="btn btn-outline-light ">
-          <a class="nav-link" href="{{ path('app_security.login') }}">Connexion</a>
-        </button>
+        <ul class="navbar-nav me-auto">
+          {% if app.user %}
+            <li class="nav-item dropdown" style="margin-right: 2rem">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ path('app_user.edit', {id : app.user.id} ) }}">Modifier mes informations</a>
+                <a class="dropdown-item" href="{{ path('app_user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('app_security.logout') }}">Déconnexion</a>
+              </div>
+            </li>
+        </ul>     
+          {% else %}
+            <button type="button" class="btn btn-outline-warning me-2">
+              <a class="nav-link" href="{{ path('app_security.registration') }}">Inscription</a>
+            </button>
+            <button type="button" class="btn btn-outline-warning me-4">
+              <a class="nav-link" href="{{ path('app_security.login') }}">Connexion</a>
+            </button>
+          {% endif %}
       </div>
 
     </div>
