@@ -4,16 +4,17 @@
 
 {% block body %}
     <div class="container-fluid p-5">
-        {% if not plats.items is same as([]) %}
-
-        <h1 class="text-warning text-center">Liste des plats Incontournables</h1>
-
         {# flash info success a la création d'un plats #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{ message }}
             </div>
         {% endfor %}
+        
+        {% if not plats.items is same as([]) %}
+
+        <h1 class="text-warning text-center">Liste des plats Incontournables</h1>
+
         
         <a href=" {{ path('app_plats.new') }}" class="btn btn-primary">
             Créer un Plat
@@ -44,7 +45,7 @@
                         <td>
                             <img class="fit-picture" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                         </td>
-                        <td>{{plat.prix}}</td>
+                        <td>{{plat.prix|number_format(2, '.', ',')}}€</td>
                         <td>{{plat.description}}</td>
                         <td>categorie</td>
                         <td>
@@ -64,6 +65,10 @@
         </div>
     {% else %}
         <h4 class="m-4">Il n'y a pas de plats</h4>
+
+        <a href=" {{ path('app_plats.new') }}" class="btn btn-primary">
+            Créer un Plat
+        </a>
     {% endif %}
     </div>
 <style>

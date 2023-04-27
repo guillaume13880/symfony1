@@ -4,16 +4,17 @@
 
 {% block body %}
     <div class="container-fluid p-5">
-        {% if not menus.items is same as([]) %}
-
-        <h1 class="text-warning text-center">Liste des Menus</h1>
-
         {# flash info success a la modification d'un menu #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{ message }}
             </div>
         {% endfor %}
+        
+        {% if not menus.items is same as([]) %}
+
+        <h1 class="text-warning text-center">Liste des Menus</h1>
+
 
         <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
             Créer un Menu
@@ -44,11 +45,11 @@
                         <th scope="row">{{menu.id}}</th>
                         <td>{{menu.titre}}</td>
                         <td>{{menu.formule1}}</td>
-                        <td>{{menu.prix1}}</td>
                         <td>{{menu.description1}}</td>
+                        <td>{{menu.prix1|number_format(2, '.', ',')}}€</td>
                         <td>{{menu.formule2}}</td>
                         <td>{{menu.description2}}</td>
-                        <td>{{menu.prix2}}</td>
+                        <td>{{menu.prix2|number_format(2, '.', ',')}}€</td>
                         <td>
                             <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
@@ -66,6 +67,10 @@
         </div>
     {% else %}
         <h4 class="m-4">Il n'y a pas de Menus</h4>
+
+        <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
+            Créer un Menu
+        </a>
     {% endif %}
     </div>
 <style>
