@@ -8,6 +8,13 @@
 
         <h1 class="text-warning text-center">Liste des Menus</h1>
 
+        {# flash info success a la modification d'un menu #}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
             Créer un Menu
         </a>
