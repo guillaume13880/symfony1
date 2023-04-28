@@ -16,7 +16,7 @@ class HorairesController extends AbstractController
 {
 
     /** 
-     * Ce Controller affiche les Horaires dans un tableau 
+     * Ce Controller affiche les Horaires dans un tableau ( + affichage footer = visibilité)
      * 
     */
     #[Route('/horaires', name: 'app_horaires.tableau', methods: ['GET'])]

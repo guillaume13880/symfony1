@@ -6,7 +6,7 @@
     <div class="container-fluid p-5">
         {% if not horaires.items is same as([]) %}
 
-        <h1 class="text-warning text-center">Liste des horaires</h1>
+        <h1 class="text-warning text-center">Les horaires administration</h1>
 
         {# flash info success a la modif des horaires #}
         {% for message in app.flashes('success') %}
@@ -14,60 +14,17 @@
                 {{ message }}
             </div>
         {% endfor %}
+     
+        {% for horaire in horaires %}  
+            <div class="container">
+                <a href="{{ path('app_horaires.edit', { id: horaire.id }) }}" class="btn btn-primary mt-4">Modifier</a>             
+                <div class=" mt-4">
+                    <h4>Les horaires d'ouverture du magazin : </h4>
+                </div>
+            </div>       
+        {% endfor %}
 
-        <div class="count mt-4">
-            <h4>Les horaires d'ouverture du magazin : </h4>
-        </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Numéro</th>
-                    <th scope="col">Lu-AM</th>
-                    <th scope="col">Lu-PM</th>
-                    <th scope="col">Ma-AM</th>
-                    <th scope="col">Ma-PM</th>
-                    <th scope="col">Me-AM</th>
-                    <th scope="col">Me-PM</th>
-                    <th scope="col">Je-AM</th>
-                    <th scope="col">Je-PM</th>
-                    <th scope="col">Ve-AM</th>
-                    <th scope="col">Ve-PM</th>
-                    <th scope="col">Sa-AM</th>
-                    <th scope="col">Sa-PM</th>
-                    <th scope="col">Di-AM</th>
-                    <th scope="col">Di-PM</th>
-                    <th scope="col">Edition</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                {% for horaire in horaires %}
-                    <tr class="table-active">
-                        <th scope="row">{{horaire.id}}</th>
-                        <td>{{horaire.luAM}}</td>
-                        <td>{{horaire.luPM}}</td>
-                        <td>{{horaire.maAM}}</td>
-                        <td>{{horaire.maPM}}</td>
-                        <td>{{horaire.meAM}}</td>
-                        <td>{{horaire.mePM}}</td>
-                        <td>{{horaire.jeAM}}</td>
-                        <td>{{horaire.jePM}}</td>
-                        <td>{{horaire.veAM}}</td>
-                        <td>{{horaire.vePM}}</td>
-                        <td>{{horaire.saAM}}</td>
-                        <td>{{horaire.saPM}}</td>
-                        <td>{{horaire.diAM}}</td>
-                        <td>{{horaire.diPM}}</td>
-                        <td>
-                            <a href="{{ path('app_horaires.edit', { id: horaire.id }) }}" class="btn btn-info">Modifier</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                
-            </tbody>
-        </table>
-
+    
     {% else %}
         <h4 class="m-4">Il n'y a pas d'horaires</h4>
     {% endif %}
@@ -76,6 +33,9 @@
     {% include 'partials/_footer.html.twig' %}
     
 <style>
+footer{
+    margin-top:-150px;
+}
      .active7 {
         color:orange;
     }
