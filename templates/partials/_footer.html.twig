@@ -1,10 +1,65 @@
 
-<div class="container text-center p-4">
-    
-    <h2 class="display-5 text-warning ">Nos horaires d'ouverture </h2>
-    <p>lundi : </p>
-    <p>mardi :</p>
-    <p>mercredi :</p>
-    <p>jeudi :</p> 
+    <footer>
+        {% if not horaires.items is same as([]) %}
+        <div class="container text-center p-4"  style="background-color:#515A5A; margin-top:100px">
+            <h2 class="display-5 text-warning ">Nos horaires d'ouverture </h2>
+            {% for horaire in horaires %}
 
-</div>
+                <div class="container-fluid d-flex flex-column mt-4" style="max-width:300px">
+                    <div class="d-inline-flex flex-row justify-content-between ">
+                        <div class="p-2 day">LUNDI</div>
+                        <div class="p-2 day-time">{{ horaire.luAM }} <br> {{ horaire.luPM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">MARDI</div>
+                        <div class="p-2 day-time">{{ horaire.maAM }} <br> {{ horaire.maPM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">MERCREDI</div>
+                        <div class="p-2 day-time">{{ horaire.meAM }} <br> {{ horaire.mePM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">JEUDI</div>
+                        <div class="p-2 day-time">{{ horaire.jeAM }} <br> {{ horaire.jePM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">VENDREDI</div>
+                        <div class="p-2 day-time">{{ horaire.veAM }} <br> {{ horaire.vePM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">SAMEDI</div>
+                        <div class="p-2 day-time">{{ horaire.saAM }} <br> {{ horaire.saPM }}</div>
+                    </div>
+                    <div class="d-inline-flex flex-row justify-content-between"> 
+                        <div class="p-2 day">DIMANCHE</div>
+                        <div class="p-2 day-time">{{ horaire.diAM }} <br> {{ horaire.diPM }}</div>
+                    </div>
+                </div>
+            {% endfor %}    
+        </div>
+
+        <div class="container-fluid text-center mt-5" style="background-color:#E5E7E9 ">
+            <h6 class="pt-3 m-0">Mentions légales</h6>
+            <div class="d-flex justify-content-around flex-row text-muted">
+                <div class="p-2">Flex item 1</div>
+                <div class="p-2">Flex item 2</div>
+                <div class="p-2">Flex item 3</div>
+                <div class="p-2">Flex item 4</div>
+            </div>
+        </div>
+        {% else %}
+            <h2 class="display-5 text-warning ">Les horaires ne sont pas définies </h2>
+        {% endif %}
+    </footer>
+<style>
+    .day{
+        color: orange;
+        margin-right:50px;
+    }
+    .day-time{
+        color: white;
+    }
+</style>
+
+
+
