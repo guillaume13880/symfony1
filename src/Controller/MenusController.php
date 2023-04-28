@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Menus;
 use App\Repository\MenusRepository;
+use App\Repository\HorairesRepository;
 use App\Form\MenusType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,11 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MenusController extends AbstractController
 {
     /** 
-     * Ce Controller affiche tous les Menus dans la page d'acceuil avec une pagination
+     * Ce Controller affiche tous les Menus dans la page d'acceuil avec une pagination ainsi que les horaires dans le footer
      * 
     */
     #[Route('/menus', name: 'app_menus', methods: ['GET'])]
-    public function index(MenusRepository $repository, PaginatorInterface $paginator, Request $request): Response
+    public function index(MenusRepository $repository, HorairesRepository $repository2, PaginatorInterface $paginator, Request $request): Response
     {
         $menus = $paginator->paginate(
             $repository->findAll(),
@@ -29,8 +30,15 @@ class MenusController extends AbstractController
             1 
         );
 
+        $horaires = $paginator->paginate(
+            $repository2->findAll(),
+            $request->query->getInt('page', 1),
+            1 
+        );
+
         return $this->render('pages/menus/index.html.twig', [
-            'menus' => $menus
+            'menus' => $menus,
+            'horaires' => $horaires
         ]);
     }
 

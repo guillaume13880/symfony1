@@ -17,7 +17,7 @@ class HomeController extends AbstractController
 {
     
      /** 
-     * Cette fonction affiche tous les plats dans la page d'acceuil et les Horaires
+     * Cette fonction affiche tous les plats dans la page d'acceuil et les Horaires dans le footer
      * 
     */
     #[Route('/', 'home.index', methods: ['GET'])]
