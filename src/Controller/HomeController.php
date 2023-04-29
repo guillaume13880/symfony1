@@ -26,7 +26,7 @@ class HomeController extends AbstractController
         $plats = $paginator->paginate(
             $repository->findAll(),
             $request->query->getInt('page', 1),
-            8 
+            12 
         );
 
         $horaires = $paginator->paginate(
