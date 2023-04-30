@@ -64,6 +64,17 @@ class AppFixtures extends Fixture
         }
 
         // utilisateurs
+        $users = [];
+        $admin = new User();
+        $admin
+            ->setFullname('Administrateur')
+            ->setEmail('admin@quai-antique.fr')
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
+            ->setPlainPassword('passpass');
+
+        $users[] = $admin;
+        $manager->persist($admin);
+
         for ($u=0; $u <= 9; $u++) {
 
             $user = new User();
@@ -73,6 +84,7 @@ class AppFixtures extends Fixture
                ->setRoles(['ROLE_USER'])
                ->setPlainPassword('password');
 
+            $users[] = $user;
             $manager->persist($user);
         }
 
