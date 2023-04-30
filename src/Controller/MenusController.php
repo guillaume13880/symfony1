@@ -9,6 +9,7 @@ use App\Form\MenusType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,6 +49,7 @@ class MenusController extends AbstractController
      * 
     */
     #[Route('/menus/tableau', name: 'app_menus.tableau', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function tableau(MenusRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $menus = $paginator->paginate(
@@ -67,6 +69,7 @@ class MenusController extends AbstractController
      * 
     */
     #[Route('/menus/creation', name:'app_menus.new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, EntityManagerInterface $manager) : Response
     {
         $menus = new Menus();
@@ -98,6 +101,7 @@ class MenusController extends AbstractController
      * 
     */
     #[Route('/menus/edition/{id}', 'app_menus.edit',  methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(
         Menus $menus, 
         Request $request,
@@ -133,6 +137,7 @@ class MenusController extends AbstractController
      * 
     */
     #[Route('/menus/suppression/{id}', 'app_menus.delete', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(EntityManagerInterface $manager, Menus $menus) : Response
     {
         $manager->remove($menus);

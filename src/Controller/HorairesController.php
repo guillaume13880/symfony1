@@ -8,6 +8,7 @@ use App\Repository\HorairesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,6 +21,7 @@ class HorairesController extends AbstractController
      * 
     */
     #[Route('/horaires', name: 'app_horaires.tableau', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function tableau(HorairesRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $horaires = $paginator->paginate(
@@ -39,6 +41,7 @@ class HorairesController extends AbstractController
      * Ce Controller permet de modifer les horaires d'ouverture
      */
     #[Route('/horaires/edition/{id}', name: 'app_horaires.edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Horaires $horaires, EntityManagerInterface $manager, Request $request): Response
     {
         

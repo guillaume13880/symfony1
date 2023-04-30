@@ -8,6 +8,7 @@ use App\Form\PlatsType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,7 @@ class PlatsController extends AbstractController
 
 
     #[Route('/plats', name: 'app_plats', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(PlatsRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $plats = $paginator->paginate(
@@ -47,6 +49,7 @@ class PlatsController extends AbstractController
     */
 
     #[Route('/plats/nouveau', name: 'app_plats.new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(
         Request $request,
         EntityManagerInterface $manager
@@ -81,6 +84,7 @@ class PlatsController extends AbstractController
      * 
     */
     #[Route('/plats/edition/{id}', 'app_plats.edit',  methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(
         Plats $plats, 
         Request $request,
@@ -116,6 +120,7 @@ class PlatsController extends AbstractController
      * 
     */
     #[Route('/plats/suppression/{id}', 'app_plats.delete', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(EntityManagerInterface $manager, Plats $plats) : Response
     {
         $manager->remove($plats);
