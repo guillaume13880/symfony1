@@ -25,7 +25,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Quai Antique Admin')
+            ->setTitle('Quai Antique')
             ->renderContentMaximized();
     }
 
