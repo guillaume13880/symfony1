@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Horaires;
 use App\Entity\Plats;
 use App\Entity\Menus;
@@ -29,20 +30,30 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Plats
-        $plat = [];
-        for ($p=0; $p <= 19; $p++) {
+        // Crée 3 categories
+        for ($c=0; $c <= 2; $c++) {
 
-            $plats = new Plats();
-            $plats
-               ->setTitle($this->faker->words(3, true))
-               ->setPrix(mt_rand(0, 25))
-               ->setDescription($this->faker->text());
+            $category = new Category();
+            $category
+               ->setTitle($this->faker->words(1, true));
 
-            $plat[] = $plats;
-            $manager->persist($plats);
+            $manager->persist($category);
+
+            // Crée 5 Plats pour chaque categorie
+            $plat = [];
+            for ($p=0; $p <= 4; $p++) {
+
+                $plats = new Plats();
+                $plats
+                ->setTitle($this->faker->words(3, true))
+                ->setPrix(mt_rand(0, 25))
+                ->setDescription($this->faker->text())
+                ->setCategory($category);
+
+                $plat[] = $plats;
+                $manager->persist($plats);
+            }
         }
-
 
         // Menus
         $menu = [];
