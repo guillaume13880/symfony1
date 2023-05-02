@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Plats;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -69,6 +71,17 @@ class PlatsType extends AbstractType
                 'constraints' => [
                     new Assert\Length(['min' => 2, 'max' => 255]),
                     new Assert\NotBlank()
+                ]
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'title',
+                'attr' => [
+                    'class' => 'form-select',
+                ],
+                'label' => 'Catégorie',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
                 ]
             ])
             ->add('submit', SubmitType::class, [

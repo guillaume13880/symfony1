@@ -47,7 +47,7 @@
                         </td>
                         <td>{{plat.prix|number_format(2, '.', ',')}}€</td>
                         <td>{{plat.description}}</td>
-                        <td>categorie</td>
+                        <td>{{plat.category.title}}</td>
                         <td>
                             <a href="{{ path('app_plats.edit', { id: plat.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
