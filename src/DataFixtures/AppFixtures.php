@@ -39,9 +39,9 @@ class AppFixtures extends Fixture
 
             $manager->persist($category);
 
-            // Crée 5 Plats pour chaque categorie
+            // Crée 8 Plats pour chaque categorie
             $plat = [];
-            for ($p=0; $p <= 4; $p++) {
+            for ($p=0; $p <= 7; $p++) {
 
                 $plats = new Plats();
                 $plats

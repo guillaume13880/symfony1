@@ -24,7 +24,7 @@ class HomeController extends AbstractController
     public function index(PlatsRepository $repository, HorairesRepository $repository2, PaginatorInterface $paginator, Request $request): Response
     {
         $plats = $paginator->paginate(
-            $repository->findAll(),
+            $repository->findBy(['category' => '2']),
             $request->query->getInt('page', 1),
             12 
         );
