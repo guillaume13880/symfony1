@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Horaires;
+use App\Entity\HorairesReservable;
 use App\Entity\Plats;
 use App\Entity\Menus;
 use App\Entity\User;

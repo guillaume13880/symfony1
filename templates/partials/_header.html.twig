@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-1">
-  <div class="container-fluid ms-4 me-4">
+  <div class="container-fluid ms-2 me-2">
     <a class="navbar-brand text-warning" href="{{ path('home.index') }}">Quai Antique</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
           <a class="nav-link active3" href="{{ path('app_menus') }}">Nos Menus</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active4" href="#">Réserver</a>
+          <a class="nav-link active4" href="{{ path('app_reservations') }}">Réserver</a>
         </li>
       </ul>
 
@@ -27,8 +27,8 @@
         <ul class="navbar-nav">
           {% if app.user %}
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" style="margin-right:50px" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
-              <div class="dropdown-menu">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
+              <div class="dropdown-menu dropdown-menu-end">
                 <a class="dropdown-item" href="{{ path('app_user.edit', {id : app.user.id} ) }}">Modifier mes informations</a>
                 <a class="dropdown-item" href="{{ path('app_user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
                 <div class="dropdown-divider"></div>
