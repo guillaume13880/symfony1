@@ -29,7 +29,21 @@
                         </div>
                     </div>
                     <div class="row">
-              
+                        <div class="col">
+                            {{ form_label(form.date) }}
+                            {{ form_widget(form.date) }}
+                            <div class="form-error">
+                                {{ form_errors(form.date) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.heure) }}
+                            {{ form_widget(form.heure) }}
+                            <div class="form-error">
+                                {{ form_errors(form.heure) }}              
+                            </div>
+                        </div>                
                     </div>
                     
                     {{ form_row(form._token) }}
@@ -42,4 +56,9 @@
     </div>  
 
 </div>
+<style>
+     .active4 {
+        color:orange;
+    }
+</style>
 {% endblock %}

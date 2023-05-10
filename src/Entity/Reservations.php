@@ -28,6 +28,14 @@ class Reservations
     #[Assert\NotNull()]
     private ?int $nbCouvert = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(length: 6)]
+    #[Assert\Length(min: 2, max: 6)]
+    #[Assert\NotBlank()]
+    private ?string $heure = null;
+
 
     public function getId(): ?int
     {
@@ -54,6 +62,30 @@ class Reservations
     public function setNbCouvert(int $nbCouvert): self
     {
         $this->nbCouvert = $nbCouvert;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getHeure(): ?string
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(string $heure): self
+    {
+        $this->heure = $heure;
 
         return $this;
     }

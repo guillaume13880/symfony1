@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\HeuresReservables;
 use App\Entity\Horaires;
 use App\Entity\HorairesReservable;
 use App\Entity\Plats;
@@ -56,9 +57,10 @@ class AppFixtures extends Fixture
             }
         }
 
-        // Menus
+
+        // crée 3 Menus
         $menu = [];
-        for ($m=0; $m <= 4; $m++) {
+        for ($m=0; $m <= 2; $m++) {
 
             $menus = new Menus();
             $menus
