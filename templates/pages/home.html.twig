@@ -21,7 +21,7 @@
         <hr class="my-4">
     </div>
 
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2">
         {% for plat in plats %}
         <div class="col">
             <div class="card mb-3">
@@ -35,7 +35,7 @@
         {{ knp_pagination_render(plats) }}
     </div>
     <div class="m-4">
-        <button class="btn btn-primary btn-lg"; type="button">Réserver une table</button>
+        <a class="btn btn-primary btn-lg" href="{{ path('app_reservations') }}">Réserver une table</a>
     </div>
 
     {% else %}
@@ -47,6 +47,7 @@
 {% include 'partials/_footer.html.twig' %}
 
 <style>
+    
     img{
         min-height:280px;
         max-height:280px;

@@ -3,18 +3,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\HeuresReservables;
 use App\Entity\Horaires;
-use App\Entity\HorairesReservable;
 use App\Entity\Plats;
 use App\Entity\Menus;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use Faker\Generator;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
@@ -56,8 +51,7 @@ class AppFixtures extends Fixture
                 $manager->persist($plats);
             }
         }
-
-
+       
         // crée 3 Menus
         $menu = [];
         for ($m=0; $m <= 2; $m++) {

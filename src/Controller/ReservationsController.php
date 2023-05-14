@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reservations;
 use App\Form\ReservationsType;
+use App\Repository\CalendarRepository;
 use App\Repository\ReservationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,7 @@ class ReservationsController extends AbstractController
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
         /**
-         * Ce Controller permet de créer une Reservation dans un Form (Si il reste des place)
+         * Ce Controller permet de créer une Reservation dans un Form 
          */  
         //$query = $manager->createQuery('SELECT SUM(nb_couvert) FROM reservations');
 
