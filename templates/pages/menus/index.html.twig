@@ -28,7 +28,7 @@
         {{ knp_pagination_render(menus) }}
     </div>
     <div class="d-flex justify-content-start m-4">
-        <button class="btn btn-primary btn-lg"; type="button">Réserver une table</button>
+        <a class="btn btn-primary" href="{{ path('app_reservations') }}">Réserver une table</a>
     </div>
 
     {% else %}

@@ -3,23 +3,23 @@
 {% block title %}Quai Antique - La Carte {% endblock %}
 
 {% block body %}
-<style>
-    
-</style>
 
 <div class="container">
     <h1 class="display-4 text-center text-warning mt-4">La Carte du Restaurant</h1>
     
-    <h2 class="text-warning display-6 mt-4">Les Entrées :</h2>
+    <h2 class="text-warning display-6 mt-4">Nos Entrées :</h2>
     <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
         {% for plat in plats %}
             
         <div class="col">
             <div class="card mb-3">
+                <img class="card-img-top border-bottom" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
                     <p class="text-center">{{ plat.title }}</p>
                     <p class="">{{ plat.description }}</p>
-                    <div class="text-end">{{ plat.prix }} €</div>
+                </div>
+                <div class="card-footer">
+                    <div class="text-end me-4">{{ plat.prix }} €</div>
                 </div>
             </div>
         </div>
@@ -31,9 +31,12 @@
         {% for plat in plats2 %}
         <div class="col">
             <div class="card mb-3">
+                <img class="card-img-top" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
                     <p class="text-center">{{ plat.title }}</p>
                     <p class="">{{ plat.description }}</p>
+                </div>
+                <div class="card-footer">
                     <div class="text-end">{{ plat.prix }} €</div>
                 </div>
             </div>
@@ -46,21 +49,38 @@
         {% for plat in plats3 %}
         <div class="col">
             <div class="card mb-3">
+                <img class="card-img-top" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
                     <p class="text-center">{{ plat.title }}</p>
                     <p class="">{{ plat.description }}</p>
+                </div>
+                <div class="card-footer">
                     <div class="text-end">{{ plat.prix }} €</div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-   
+    <div class="m-4">
+        <a class="btn btn-primary btn-lg" href="{{ path('app_reservations') }}">Réserver une table</a>
+    </div>
 </div>
+
+{% include 'partials/_footer.html.twig' %}
+
 
 <style>
      .active2 {
         color:orange;
+    }
+
+    img{
+        min-height:260px;
+        max-height:260px;
+    }
+    .card{
+        min-height:520px;
+        border-radius:25px;
     }
 </style>
 {% endblock %}

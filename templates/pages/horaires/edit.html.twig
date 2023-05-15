@@ -16,7 +16,134 @@
             <div class="card-body">
                 <h1 class=" text-warning text-center">Formulaire de modification des horaires</h1>
 
-                {{ form(form) }}
+                <form name="horaire" method="post">
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.luAM) }}
+                            {{ form_widget(form.luAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.luAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.luPM) }}
+                            {{ form_widget(form.luPM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.luPM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.maAM) }}
+                            {{ form_widget(form.maAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.maAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.maPM) }}
+                            {{ form_widget(form.maPM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.maPM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.meAM) }}
+                            {{ form_widget(form.meAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.meAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.mePM) }}
+                            {{ form_widget(form.mePM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.mePM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.jeAM) }}
+                            {{ form_widget(form.jeAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.jeAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.jePM) }}
+                            {{ form_widget(form.jePM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.jePM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.veAM) }}
+                            {{ form_widget(form.veAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.veAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.vePM) }}
+                            {{ form_widget(form.vePM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.vePM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.saAM) }}
+                            {{ form_widget(form.saAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.saAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.saPM) }}
+                            {{ form_widget(form.saPM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.saPM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(form.diAM) }}
+                            {{ form_widget(form.diAM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.diAM) }}              
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            {{ form_label(form.diPM) }}
+                            {{ form_widget(form.diPM) }}
+                            <div class="form-error">
+                                {{ form_errors(form.diPM) }}              
+                            </div>
+                        </div>
+                    </div>
+                    
+                        
+                    {{ form_row(form._token) }}
+                    <button type="submit" id="reservation_submit" name="reservation[submit]" class="btn btn-primary mt-4">
+                        Valider !
+                    </button>     
+                </form>
+                
             </div>
         </div>
     </div>
