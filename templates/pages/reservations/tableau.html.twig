@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Les Reservations{% endblock %}
+
+{% block body %}
+    <div class="container-fluid p-5"> 
+        {# flash info success a la modification d'un menu #}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+             
+        {% if not reservations.items is same as([]) %}
+
+        <h1 class="text-warning text-center">Liste des reservations</h1>
+
+        <div class="count mt-4">
+            <h4>Il y a {{ reservations.getTotalItemCount }} réservations au total ! </h4>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nb de Couvert</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Heure</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Suppression</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr class="table-active">
+                        <th scope="row">{{reservation.id}}</th>
+                        <td>{{reservation.email}}</td>
+                        <td>{{reservation.nbCouvert}}</td>
+                        <td>{{reservation.date|date('d-m-Y')}}</td>
+                        <td>{{reservation.heure}}</td>
+                        <td>
+                            <a href="{{ path('app_reservations.edit', { id: reservation.id }) }}" class="btn btn-info">Modifier</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_reservations.delete', { id: reservation.id }) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(reservations) }}
+        </div>
+    {% else %}
+        <h4 class="m-4">Il n'y a pas de reservations</h4>
+    {% endif %}
+    </div>
+{% endblock %}
