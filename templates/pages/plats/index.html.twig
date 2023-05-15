@@ -53,7 +53,7 @@
                             <a href="{{ path('app_plats.edit', { id: plat.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            <a href="{{ path('app_plats.delete', { id: plat.id }) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_plats.delete', { id: plat.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce plat ?')">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -54,7 +54,7 @@
                             <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce menu ?')">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
