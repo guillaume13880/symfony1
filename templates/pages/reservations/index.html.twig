@@ -5,9 +5,10 @@
 {% block body %}
 
 <div class="container">
-    <section class="formStyle">
-        <div class="card mt-4 p-4">
-            <div class="card-body">
+
+    <section class="formStyle d-flex align-items-center justify-content-center">
+        <div class="styleD border border-primary p-4">
+            
                 <h1 class="text-center mt-4 text-warning">Réserver une table</h1>
 
                 <form name="reservation" method="post" enctype="multipart/form-data">
@@ -52,7 +53,7 @@
                     </button>     
                 </form>
                 
-            </div>
+            
         </div>    
     </section>
 </div>
@@ -65,7 +66,10 @@
     .formStyle{
         min-height:80vh;
     }
-
+    .styleD{
+       min-height:60vh;
+       min-width:80vw;
+    }
 
 
 </style>
