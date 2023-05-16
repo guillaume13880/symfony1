@@ -4,7 +4,7 @@
 {% block title %}Quai Antique - Les Plats{% endblock %}
 
 {% block body %}
-    <div class="container-fluid p-5">
+    <div class="container-fluid MarginPageTop">
         {# flash info success a la création d'un plats #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -73,6 +73,9 @@
     {% endif %}
     </div>
 <style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
     img{
         width:45px;
         height:40px;

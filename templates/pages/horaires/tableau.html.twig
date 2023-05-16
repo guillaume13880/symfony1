@@ -3,10 +3,10 @@
 {% block title %}Quai Antique - Les Horaires{% endblock %}
 
 {% block body %}
-    <div class="container-fluid p-5">
+    <div class="container-fluid MarginPageTop">
         {% if not horaires.items is same as([]) %}
 
-        <h1 class="text-warning text-center">Les horaires administration</h1>
+        <h1 class="text-warning text-center">Les horaires</h1>
 
         {# flash info success a la modif des horaires #}
         {% for message in app.flashes('success') %}
@@ -33,6 +33,9 @@
     {% include 'partials/_footer.html.twig' %}
     
 <style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
      .active7 {
         color:orange;
     }

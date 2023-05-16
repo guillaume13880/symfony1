@@ -3,7 +3,7 @@
 {% block title %}Quai Antique - Les Reservations{% endblock %}
 
 {% block body %}
-    <div class="container-fluid p-5"> 
+    <div class="container-fluid MarginPageTop"> 
         {# flash info success a la modification d'un menu #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -58,4 +58,9 @@
         <h4 class="m-4">Il n'y a pas de reservations</h4>
     {% endif %}
     </div>
+<style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
+</style>
 {% endblock %}

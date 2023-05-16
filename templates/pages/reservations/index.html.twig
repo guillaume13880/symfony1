@@ -4,16 +4,16 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container MarginPageTop">
 
-    <section class="formStyle d-flex align-items-center justify-content-center">
+    <section class="d-flex align-items-center justify-content-center">
         <div class="styleD border border-primary p-4">
             
                 <h1 class="text-center mt-4 text-warning">Réserver une table</h1>
 
                 <form name="reservation" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-6">
                             {{ form_label(form.email) }}
                             {{ form_widget(form.email) }}
                             <div class="form-error">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col-lg-6">
                             {{ form_label(form.nbCouvert) }}
                             {{ form_widget(form.nbCouvert) }}
                             <div class="form-error">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-6">
                             {{ form_label(form.date) }}
                             {{ form_widget(form.date) }}
                             <div class="form-error">
@@ -38,7 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col-lg-6">
                             {{ form_label(form.heure) }}
                             {{ form_widget(form.heure) }}
                             <div class="form-error">
@@ -60,11 +60,11 @@
 
 {% include 'partials/_footer.html.twig' %}
 <style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
      .active4 {
          color:orange;
-    }
-    .formStyle{
-        min-height:80vh;
     }
     .styleD{
        min-height:60vh;

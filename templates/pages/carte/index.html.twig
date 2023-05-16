@@ -4,14 +4,14 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container MarginPageTop">
     <h1 class="display-4 text-center text-warning mt-4">La Carte du Restaurant</h1>
     
-    <h2 class="text-warning display-6 mt-4">Nos Entrées :</h2>
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <h2 class="text-info display-6 mt-4">Nos Entrées :</h2>
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         {% for plat in plats %}
             
-        <div class="col">
+        <div class="col-sm-10 col-xs-12">
             <div class="card mb-3">
                 <img class="card-img-top border-bottom" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
@@ -26,10 +26,10 @@
         {% endfor %}
     </div>
 
-    <h2 class="text-warning display-6 mt-4">Les Plats :</h2>
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <h2 class="text-info display-6 mt-4">Les Plats :</h2>
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         {% for plat in plats2 %}
-        <div class="col">
+        <div class="col-sm-10 col-xs-12">
             <div class="card mb-3">
                 <img class="card-img-top" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
@@ -44,10 +44,10 @@
         {% endfor %}
     </div>
 
-    <h2 class="text-warning display-6 mt-4">Les Desserts :</h2>
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <h2 class="text-info display-6 mt-4">Les Desserts :</h2>
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         {% for plat in plats3 %}
-        <div class="col">
+        <div class="col-sm-10 col-xs-12">
             <div class="card mb-3">
                 <img class="card-img-top" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
                 <div class="card-body">
@@ -70,6 +70,9 @@
 
 
 <style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
      .active2 {
         color:orange;
     }
@@ -79,8 +82,9 @@
         max-height:260px;
     }
     .card{
-        min-height:520px;
         border-radius:25px;
+        min-height:510px;
+        max-height:510px;
     }
 </style>
 {% endblock %}

@@ -8,7 +8,7 @@
 
 {% if not menus.items is same as([]) %}
 
-<div class="container text-center mt-4">
+<div class="container MarginPageTop text-center">
     {% for menu in menus %}
         <h1 class="display-4 text-warning text-center m-4">Nos Menus du Moment!</h1>
         <div class="container border border-primary">
@@ -39,6 +39,9 @@
 {% include 'partials/_footer.html.twig' %}
 
 <style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
      .active3 {
         color:orange;
     }
