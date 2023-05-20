@@ -3,7 +3,7 @@
 {% block title %}Quai Antique - Les Menus{% endblock %}
 
 {% block body %}
-    <div class="container-fluid MarginPageTop">
+    <div class="container MarginPageTop">
         {# flash info success a la modification d'un menu #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -16,51 +16,52 @@
         <h1 class="text-warning text-center">Liste des Menus</h1>
 
 
-        <a href=" {{ path('app_menus.new') }}" class="btn btn-primary">
+        <a href=" {{ path('app_menus.new') }}" class="btn btn-primary mt-4">
             Créer un Menu
         </a>
 
         <div class="count mt-4">
             <h4>Il y a {{ menus.getTotalItemCount }} Menus au total ! </h4>
         </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Numéro</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Formule 1</th>
-                    <th scope="col">Description 1</th>
-                    <th scope="col">Prix 1</th>
-                    <th scope="col">Formule 2</th>
-                    <th scope="col">Description 2</th>
-                    <th scope="col">Prix 2</th>
-                    <th scope="col">Edition</th>
-                    <th scope="col">Suppression</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for menu in menus %}
-                    <tr class="table-active">
-                        <th scope="row">{{menu.id}}</th>
-                        <td>{{menu.titre}}</td>
-                        <td>{{menu.formule1}}</td>
-                        <td>{{menu.description1}}</td>
-                        <td>{{menu.prix1|number_format(2, '.', ',')}}€</td>
-                        <td>{{menu.formule2}}</td>
-                        <td>{{menu.description2}}</td>
-                        <td>{{menu.prix2|number_format(2, '.', ',')}}€</td>
-                        <td>
-                            <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
-                        </td>
-                        <td>
-                            <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce menu ?')">Supprimer</a>
-                        </td>
+        <div class="styleTable">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Numéro</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Formule 1</th>
+                        <th scope="col">Description 1</th>
+                        <th scope="col">Prix 1</th>
+                        <th scope="col">Formule 2</th>
+                        <th scope="col">Description 2</th>
+                        <th scope="col">Prix 2</th>
+                        <th scope="col">Edition</th>
+                        <th scope="col">Suppression</th>
                     </tr>
-                {% endfor %}
-                
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for menu in menus %}
+                        <tr class="table-active">
+                            <th scope="row">{{menu.id}}</th>
+                            <td>{{menu.titre}}</td>
+                            <td>{{menu.formule1}}</td>
+                            <td>{{menu.description1}}</td>
+                            <td>{{menu.prix1|number_format(2, '.', ',')}}€</td>
+                            <td>{{menu.formule2}}</td>
+                            <td>{{menu.description2}}</td>
+                            <td>{{menu.prix2|number_format(2, '.', ',')}}€</td>
+                            <td>
+                                <a href="{{ path('app_menus.edit', { id: menu.id }) }}" class="btn btn-info">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('app_menus.delete', { id: menu.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce menu ?')">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
         
         <div class="navigation d-flex justify-content-center mt-4">
             {{ knp_pagination_render(menus) }}
@@ -79,6 +80,33 @@
     }
      .active6 {
         color:orange;
+    }
+    .styleTable{
+        width:85vw;
+        height:45vh;
+        overflow:auto;
+        margin:auto
+     
+
+    }
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+    border: 1px solid #3CEE9D;
+    border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: #3CEE9D;  
+    border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: #88ba1c;  
     }
 </style>
 {% endblock %}

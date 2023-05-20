@@ -6,9 +6,9 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container d-flex justify-content-center MarginPageTop">
 
-        <div class="card mt-4 p-4">
+        <div class="card m-4 p-4">
             <div class="card-body">
                 <h1 class=" text-warning text-center">Formulaire d'inscription</h1>
 
@@ -17,5 +17,14 @@
         </div>
 
     </div>
-
+<style>
+    .MarginPageTop{
+        margin-top:15vh;
+    }
+    @media screen and (min-width: 992px) {
+        .card{
+            width:60%;
+        }
+    }
+</style>
 {% endblock %}

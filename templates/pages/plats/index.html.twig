@@ -4,7 +4,7 @@
 {% block title %}Quai Antique - Les Plats{% endblock %}
 
 {% block body %}
-    <div class="container-fluid MarginPageTop">
+    <div class="container MarginPageTop">
         {# flash info success a la création d'un plats #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -17,49 +17,50 @@
         <h1 class="text-warning text-center">Liste des plats</h1>
 
         
-        <a href=" {{ path('app_plats.new') }}" class="btn btn-primary">
+        <a href=" {{ path('app_plats.new') }}" class="btn btn-primary mt-4">
             Créer un Plat
         </a>
 
         <div class="count mt-4">
             <h4>Il y a {{ plats.getTotalItemCount }} plats au total ! </h4>
         </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Numéro</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Catégorie</th>
-                    <th scope="col">Edition</th>
-                    <th scope="col">Suppression</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for plat in plats %}
-                    <tr class="table-active">
-                        <th scope="row">{{plat.id}}</th>
-                        <td>{{plat.title}}</td>
-                        <td>
-                            <img class="fit-picture" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
-                        </td>
-                        <td>{{plat.prix|number_format(2, '.', ',')}}€</td>
-                        <td>{{plat.description}}</td>
-                        <td>{{plat.category.title}}</td>
-                        <td>
-                            <a href="{{ path('app_plats.edit', { id: plat.id }) }}" class="btn btn-info">Modifier</a>
-                        </td>
-                        <td>
-                            <a href="{{ path('app_plats.delete', { id: plat.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce plat ?')">Supprimer</a>
-                        </td>
+        <div class="styleTable">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Numéro</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Edition</th>
+                        <th scope="col">Suppression</th>
                     </tr>
-                {% endfor %}
-                
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for plat in plats %}
+                        <tr class="table-active">
+                            <th scope="row">{{plat.id}}</th>
+                            <td>{{plat.title}}</td>
+                            <td>
+                                <img class="fit-picture" src=" {{ vich_uploader_asset(plat, 'imageFile') }} " alt="image de plats incontournable">
+                            </td>
+                            <td>{{plat.prix|number_format(2, '.', ',')}}€</td>
+                            <td>{{plat.description}}</td>
+                            <td>{{plat.category.title}}</td>
+                            <td>
+                                <a href="{{ path('app_plats.edit', { id: plat.id }) }}" class="btn btn-info">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('app_plats.delete', { id: plat.id }) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce plat ?')">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
         
         <div class="navigation d-flex justify-content-center mt-4">
             {{ knp_pagination_render(plats) }}
@@ -79,6 +80,33 @@
     img{
         width:45px;
         height:40px;
+    }
+    .styleTable{
+        width:85vw;
+        height:45vh;
+        overflow:auto;
+        margin:auto
+     
+
+    }
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+    border: 1px solid #3CEE9D;
+    border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: #3CEE9D;  
+    border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: #88ba1c;  
     }
 </style>
 {% endblock %}
